@@ -25,7 +25,7 @@ cost_vector = -1/m * (y .* log(sigmoid(z)) + (ones(size(y)) - y) .* log(1 - sigm
 J = sum(cost_vector);
 
 residual_vector = sigmoid(z) - y;
-grad = X' * residual_vector;
+grad = (1/m) * X' * residual_vector;
 
 
 
