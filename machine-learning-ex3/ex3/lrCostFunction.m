@@ -36,7 +36,11 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
-
+hypothesis_vector = sigmoid(X * theta);
+cost_vector = (-1/m) * (y .* log(hypothesis_vector) + (1 - y) .* log(1 - hypothesis_vector));
+regularization = (lambda/(2 * m)) * theta .^2;
+regularization(1) = 0;
+J = sum(cost_vector) + sum(regularization);
 
 
 
@@ -47,6 +51,10 @@ grad = zeros(size(theta));
 
 % =============================================================
 
-grad = grad(:);
+#grad = grad(:);
+w = (1./m) * (hypothesis_vector - y);
+grad_regular = (lambda/m) * theta;
+grad_regular(1) = 0;
+grad = X' * w + grad_regular;
 
 end
