@@ -51,7 +51,7 @@ J = sum(cost_vector) + sum(regularization);
 
 % =============================================================
 
-#grad = grad(:);
+%grad = grad(:);
 w = (1./m) * (hypothesis_vector - y);
 grad_regular = (lambda/m) * theta;
 grad_regular(1) = 0;
